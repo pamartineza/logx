@@ -112,4 +112,8 @@ object Logx {
         }
     }
 
+    fun reportException(e: Throwable) {
+        logger.reportException(e)
+    }
+
 }
