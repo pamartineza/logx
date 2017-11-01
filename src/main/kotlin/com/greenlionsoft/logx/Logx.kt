@@ -10,20 +10,14 @@ object Logx {
     }
 
     //Debug
-    fun d(tag: String, message: String) {
-        if (logger.areLogsEnabled()) {
-            logger.d(tag, message)
-        }
-    }
-
     fun d(message: String) {
         if (logger.areLogsEnabled()) {
             logger.d(message)
         }
     }
 
-    fun d(enabledStatusOverride: Boolean, tag: String, message: String) {
-        if (enabledStatusOverride) {
+    fun d(tag: String, message: String) {
+        if (logger.areLogsEnabled()) {
             logger.d(tag, message)
         }
     }
@@ -34,23 +28,46 @@ object Logx {
         }
     }
 
-    //Verbose
-    fun v(tag: String, message: String) {
-        if (logger.areLogsEnabled()) {
-            logger.v(tag, message)
+
+    fun d(enabledStatusOverride: Boolean, tag: String, message: String) {
+        if (enabledStatusOverride) {
+            logger.d(tag, message)
         }
     }
 
+
+
+    //Verbose
     fun v(message: String) {
         if (logger.areLogsEnabled()) {
             logger.v(message)
         }
     }
 
-    //info
-    fun i(enabledStatusOverride: Boolean, tag: String, message: String) {
+    fun v(tag: String, message: String) {
+        if (logger.areLogsEnabled()) {
+            logger.v(tag, message)
+        }
+    }
+
+    fun v(enabledStatusOverride: Boolean, message: String) {
         if (enabledStatusOverride) {
-            logger.i(tag, message)
+            logger.v(message)
+        }
+    }
+
+
+    fun v(enabledStatusOverride: Boolean, tag: String, message: String) {
+        if (enabledStatusOverride) {
+            logger.v(tag, message)
+        }
+    }
+
+
+    //info
+    fun i(message: String) {
+        if (logger.areLogsEnabled()) {
+            logger.i(message)
         }
     }
 
@@ -60,59 +77,93 @@ object Logx {
         }
     }
 
-    fun i(message: String) {
-        if (logger.areLogsEnabled()) {
+    fun i(enabledStatusOverride: Boolean, message: String) {
+        if (enabledStatusOverride) {
             logger.i(message)
         }
     }
 
-    //warning
-    fun w(tag: String, message: String) {
-        if (logger.areLogsEnabled()) {
-            logger.w(tag, message)
+    fun i(enabledStatusOverride: Boolean, tag: String, message: String) {
+        if (enabledStatusOverride) {
+            logger.i(tag, message)
         }
     }
 
+
+
+    //warning
     fun w(message: String) {
         if (logger.areLogsEnabled()) {
             logger.w(message)
         }
     }
 
-    //error
-    fun e(tag: String, message: String) {
+    fun w(tag: String, message: String) {
         if (logger.areLogsEnabled()) {
-            logger.e(tag, message)
+            logger.w(tag, message)
         }
     }
 
-    fun e(enabledStatusOverride: Boolean, tag: String, message: String, e: Throwable) {
+    fun w(enabledStatusOverride: Boolean, message: String) {
         if (enabledStatusOverride) {
-            logger.e(tag, message, e)
+            logger.w(message)
         }
     }
 
-    fun e(tag: String, message: String, e: Throwable) {
-        if (logger.areLogsEnabled()) {
-            logger.e(tag, message, e)
+    fun w(enabledStatusOverride: Boolean, tag: String, message: String) {
+        if (enabledStatusOverride) {
+            logger.w(tag, message)
         }
     }
 
+
+
+    //error
     fun e(message: String) {
         if (logger.areLogsEnabled()) {
             logger.e(message)
         }
     }
 
-    fun e(message: String, e: Throwable) {
+    fun e(tag: String, message: String) {
+        if (logger.areLogsEnabled()) {
+            logger.e(tag, message)
+        }
+    }
+
+    fun e(message: String, e: Throwable?) {
         if (logger.areLogsEnabled()) {
             logger.e(message, e)
-        } else {
+        } else if (e != null) {
             logger.reportException(e)
         }
     }
 
-    fun reportException(e: Throwable) {
+    fun e(tag: String, message: String, e: Throwable?) {
+        if (logger.areLogsEnabled()) {
+            logger.e(tag, message, e)
+        }
+    }
+
+    fun e(enabledStatusOverride: Boolean, message: String, e: Throwable?) {
+        if (enabledStatusOverride) {
+            logger.e(message, e)
+        } else if (e != null) {
+            logger.reportException(e)
+        }
+    }
+
+
+    fun e(enabledStatusOverride: Boolean, tag: String, message: String, e: Throwable?) {
+        if (enabledStatusOverride) {
+            logger.e(tag, message, e)
+        } else if (e != null) {
+            logger.reportException(e)
+        }
+    }
+
+
+    fun reportException(e: Throwable?) {
         logger.reportException(e)
     }
 

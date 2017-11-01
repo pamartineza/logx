@@ -12,7 +12,7 @@ interface ILogx {
 
     fun e(tag: String, message: String)
 
-    fun e(tag: String, message: String, e: Throwable)
+    fun e(tag: String, message: String, e: Throwable?)
 
 
     fun v(message: String)
@@ -25,10 +25,10 @@ interface ILogx {
 
     fun e(message: String)
 
-    fun e(message: String, e: Throwable)
+    fun e(message: String, e: Throwable?)
 
 
     fun areLogsEnabled(): Boolean
 
-    fun reportException(e: Throwable)
+    fun reportException(e: Throwable?)
 }
